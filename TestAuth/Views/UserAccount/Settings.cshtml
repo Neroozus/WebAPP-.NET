@@ -1,0 +1,14 @@
+﻿@model TestAuth.Models.AccountSettingsModel
+@{
+    ViewData["Title"] = "AccountSettings";
+    Layout = "_Layout";
+}
+<form asp-action="EditSettings" asp-controller="UserAccount" asp-antiforgery="true">
+    <div class="form-group">
+        <label for="exampleFormControlTextarea">Напишите про себя</label>
+        <textarea class="form-control" asp-for="Info" type="text" rows="3"></textarea>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Сохранить</button>
+    </div>
+</form>

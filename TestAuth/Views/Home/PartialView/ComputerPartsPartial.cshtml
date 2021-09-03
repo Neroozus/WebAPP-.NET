@@ -1,0 +1,54 @@
+﻿@using TestAuth.ViewModels
+@model ViewComputerPartsModel
+@if (TempData["messageSuccess"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade" id="successPart" role="alert">
+        <strong>Успешно!</strong>
+        @TempData["messageSuccess"]
+    </div>
+}
+@if (TempData["messageDanger"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade" id="dangerPart" role="alert">
+        <strong>Ошибка!</strong>
+        @TempData["messageDanger"]
+    </div>
+}
+<table class="table table-striped" style="text-align:center">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Производитель</th>
+            <th>Название</th>
+            <th>Количество</th>
+            <th>Действие</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{ int i = 1;}
+        @foreach (var row in Model.computerPartsCollection)
+        {
+            <tr>
+                <td>@i</td>
+                <td>@row.Manufacturer</td>
+                <td>@row.ComputerPart</td>
+                <td>@row.Quantity</td>
+                <td>
+                    <button type="button" class="btn btn-warning btn-sm" data-url="@Url.Action($"EditPart/{row.Id}")" id="EditButton" data-target="#modDialog">Редактировать</button>
+                    <button type="button" data-url="@Url.Action($"DeletePart/{row.Id}")" data-target="#modDialog" id="DeleteButton" class="btn btn-danger btn-sm">Удалить</button>
+                    <input type="hidden" class="id" value="@row.Id" />
+                </td>
+            </tr>
+            i++;
+        }
+    </tbody>
+</table>
+<div class="form-group" style="text-align:center">
+    <button type="button" data-url="@Url.Action($"AddPart/")" id="AddButton" data-target="#modDialog" class="btn btn-primary btn-sm">Добавить товар</button>
+</div>
+
+<script src="~/js/Site.js"></script>
+
+
+
+

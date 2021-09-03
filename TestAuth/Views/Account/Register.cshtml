@@ -1,0 +1,43 @@
+﻿@model TestAuth.Models.RegisterModel
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="~/css/Site.css">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<div class="container h-100">
+    <div class="row h-100 justify-content-center align-items-center">
+        <div class="col-md-4" style="text-align:center">
+            <h3>Регистрация</h3>
+            <hr />
+            <form asp-action="Register" asp-controller="Account" asp-anti-forgery="true">
+                <div class="validation" asp-validation-summary="ModelOnly"></div>
+                <div style="text-align:center">
+                    <div class="form-group">
+                        <label asp-for="Email" class="control-label">Введите Email</label>
+                        <input type="text" asp-for="Email" class="form-control" required />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Password" class="control-label">Введите пароль</label>
+                        <input asp-for="Password" class="form-control" required />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="PasswordConfirm" class="control-label">Повторите пароль</label>
+                        <input asp-for="PasswordConfirm" class="form-control" required />
+                        <span asp-validation-for="PasswordConfirm" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" id="registerButton" name="theButton" class="btn btn-primary">Регистрация</button>
+                    </div>
+                </div>
+            </form>
+            <p>Уже зарегистрированы? <a asp-action="Login" asp-controller="Account">Авторизация</a></p>
+        </div>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+<script src="~/js/Register.js"></script>
+

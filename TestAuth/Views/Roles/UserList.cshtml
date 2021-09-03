@@ -1,0 +1,43 @@
+﻿@model IEnumerable<TestAuth.Models.User>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<body>
+    <div class="container mx-auto my-2 my-sm-3 my-lg-4 p-1" style="text-align:center">
+        <div class="row">
+            <div class="col-12">
+                <h2>Список пользователей</h2>
+                <br />
+                @if (TempData["messageSuccess"] != null)
+                {
+                    <div class="alert alert-success" id="successRoles" role="alert">
+                        <strong>Успешно!</strong>
+                        @TempData["messageSuccess"]
+                    </div>
+                }
+                @if (TempData["messageDanger"] != null)
+                {
+                    <div class="alert alert-danger" id="dangerRoles" role="alert">
+                        <strong>Ошибка!</strong>
+                        @TempData["messageDanger"]
+                    </div>
+                }
+                <table class="table table-striped" style="text-align:center">
+                    <thead>
+                        <tr>
+                            <th>Email</th>
+                            <th>Действие</th>
+                        </tr>
+                    </thead>
+                    @foreach (var user in Model)
+                    {
+                        <tr>
+                            <td>@user.Email</td>
+                            <td>
+                                <a class="btn btn-sm btn-primary" asp-action="Edit" asp-route-userid="@user.Id">Права доступа</a>
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+</body>

@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="favicon.ico">
+    <title>Page 404</title>
+    <!-- Bootstrap CDN CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Custom CSS -->
+    <link href="~/css/Error.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <!-- Preloader -->
+    <section id="wrapper" class="container-fluid">
+        <div class="error-box">
+            <div class="error-body text-center">
+                <h1 class="text">404</h1>
+                <h3>Упс, что-то пошло не так...</h3>
+                <p class="text-muted m-t-30 m-b-30">Нажмите на кнопку ниже, чтобы вернуться на главную страницу</p>
+                <form asp-action="MainPage" asp-controller="Home" asp-anti-forgery="true" method="get">
+                    <button type="submit" class="btn btn-warning btn-rounded m-b-40">Главная страница</button>
+                </form>
+            </div>
+            <footer class="footer text-center">Мой сайт 2021г.</footer>
+        </div>
+    </section>
+</body>
+</html>

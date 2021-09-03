@@ -1,0 +1,79 @@
+﻿@using TestAuth.ViewModels
+@model ViewComputerPartsModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_Layout";
+}
+<div class="container mx-auto my-2 my-sm-3 my-lg-4 p-1" style="text-align:center">
+    <div class="row">
+        <div class="col-sm">
+            <h3>Таблица компьтерных комплектующих</h3>
+            <hr />
+            <div id="ComputerPartsTable">
+                @{await Html.RenderPartialAsync("PartialView/ComputerPartsPartial.cshtml", Model); }
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modDialog" tabindex="-1" role="dialog" aria-labelledby="modDialog" aria-hidden="true">
+    <div id="dialogContent" class="modal-dialog" role="document">
+    </div>
+</div>
+<div class="modal fade" id="addPartModal" tabindex="-1" role="dialog" aria-labelledby="addPartModal" aria-hidden="true">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">Добавление товара</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form asp-action="AddPart" asp-controller="Home" method="post">
+                <div class="validation" asp-validation-summary="ModelOnly"></div>
+                <div style="text-align:center">
+                    <div class="row justify-content-center">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input name="IsValid" type="hidden" value="@ViewData.ModelState.IsValid.ToString()" />
+
+                                <label asp-for="@Model.computerPartsModel.Manufacturer" class="control-label">Введите производителя </label>
+                                <input type="text" asp-for="@Model.computerPartsModel.Manufacturer" class="form-control" name="manufacturer" id="manufacturer" required />
+                                <span asp-validation-for="@Model.computerPartsModel.Manufacturer" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="@Model.computerPartsModel.ComputerPart" class="control-label">Введите комплектующее</label>
+                                <input type="text" asp-for="@Model.computerPartsModel.ComputerPart" class="form-control" name="computerPart" id="computerPart" required />
+                                <span asp-validation-for="@Model.computerPartsModel.ComputerPart" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="@Model.computerPartsModel.Quantity" class="control-label">Введите количество</label>
+                                <input type="number" asp-for="@Model.computerPartsModel.Quantity" class="form-control" name="quantity" id="quantity" required />
+                                <span asp-validation-for="@Model.computerPartsModel.Quantity" class="text-danger"></span>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+
+
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+            <button type="submit" data-save="addComputerPart" class="btn btn-success">Добавить</button>
+
+        </div>
+
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/js/Site.js"></script>
+
+}
+
+

@@ -1,0 +1,22 @@
+﻿@using Microsoft.AspNetCore.Identity
+@model TestAuth.Models.ChangeRoleModel
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <div class="container mx-auto my-2 my-sm-3 my-lg-4 p-1" style="text-align:center">
+        <div class="row">
+            <div class="col-12">
+                <h2>Изменение ролей для пользователя @Model.UserEmail</h2>
+
+                <form asp-action="Edit" asp-controller="Roles" method="post">
+                    <input type="hidden" name="userId" value="@Model.UserId" />
+                    <div class="form-group">
+                        @foreach (IdentityRole role in Model.AllRoles)
+                        {
+                            <input type="checkbox" name="roles" value="@role.Name"
+                                   @(Model.UserRoles.Contains(role.Name) ? "checked=\"checked\"" : "") />@role.Name <br />
+                            }
+                    </div>
+                    <button type="submit" class="btn btn-sm btn-success">Сохранить</button>
+                </form>
+                </div>
+</div>
+</div>

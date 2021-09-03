@@ -1,0 +1,44 @@
+﻿@using TestAuth.Models
+@model ConfirmEmailModel
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<div class="container" style="text-align:center">
+    <div id="successResendEmail" class="alert alert-success alert-dismissible fade" role="alert">
+        <strong>Успешно!</strong>
+        Письмо для подтверждения было повторно выслано!
+
+    </div>
+
+    @if (Model.emailVerified == true)
+    {
+        <div class="alert alert-success" role="alert">
+            <p>Вы успешно подтвердили свой аккаунт!</p>
+        </div>
+        <a href="/Account/Login"> Нажмите, чтобы авторизоваться</a>
+    }
+    else
+    {
+        <h2> Подтвердите свой аккаунт</h2>
+            <p>На Вашу почту было выслано письмо, чтобы Вы подтвердили созданный аккаунт.</p>
+        <p>Если на почту не пришло письмо подтверждения, нажмите на кнопку ниже:</p>
+        <form asp-action="ConfirmEmail" asp-controller="Account" id="ResendForm" method="post">
+            <input type="hidden" asp-for="@Model.userId" name="userId" id="userId" />        
+            <div class="form-group">
+                <button type="submit" id="ResendButton" class="btn btn-sm btn-success">Отправить письмо повторно</button>
+                <p style="visibility:hidden" id="timer">Кнопка будет доступна через: <span class="seconds" value=""></span>  сек.</p>
+            </div>
+        </form>
+        
+
+    }
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="~/js/Register.js"></script>
+</div>
+
+

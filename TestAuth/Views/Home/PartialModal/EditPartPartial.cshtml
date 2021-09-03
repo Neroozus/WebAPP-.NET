@@ -1,0 +1,50 @@
+﻿@using TestAuth.Models
+@model ComputerPartsModel
+
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">Редактирование товара</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form asp-action="EditPart" asp-controller="Home" method="post">
+                <input type="hidden" asp-for="@Model.Id" name="id" id="id" />
+                <input name="IsValid" type="hidden" value="@ViewData.ModelState.IsValid.ToString()" />
+                <div class="validation" asp-validation-summary="ModelOnly"></div>
+                <div style="text-align:center">
+                    <div class="row justify-content-center">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="@Model.Manufacturer" class="control-label">Введите производителя </label>
+                                <input type="text" asp-for="@Model.Manufacturer" class="form-control" name="manufacturer" id="manufacturer" required />
+                                <span asp-validation-for="@Model.Manufacturer" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="@Model.ComputerPart" class="control-label">Введите комплектующее</label>
+                                <input type="text" asp-for="@Model.ComputerPart" class="form-control" name="computerPart" id="computerPart" required />
+                                <span asp-validation-for="@Model.ComputerPart" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="@Model.Quantity" class="control-label">Введите количество</label>
+                                <input type="number" asp-for="@Model.Quantity" class="form-control" name="quantity" id="quantity" required />
+                                <span asp-validation-for="@Model.Quantity" class="text-danger"></span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+
+
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+            <button type="submit" data-save="editComputerPart" class="btn btn-success">Редактировать</button>
+        </div>
+    </div>
+
+<script src="~/js/ComputerPartsPartialModal.js"></script>
+

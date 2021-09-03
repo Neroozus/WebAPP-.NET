@@ -1,0 +1,20 @@
+﻿@model TestAuth.Models.User
+@{
+    ViewData["Title"] = "Account";
+    Layout = "_Layout";
+}
+
+<div class="container mx-auto my-2 my-sm-3 my-lg-4 p-1" style="text-align:center">
+    <div class="row">
+        <div class="col-sm">
+            <div class="form-group">
+                <p>Обо мне: @Model.Info</p>
+            </div>
+            <form asp-action="Settings" asp-controller="UserAccount" asp-antiforgery="true">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Редактировать</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
